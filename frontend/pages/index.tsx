@@ -9,10 +9,21 @@ const index = () => {
       console.log(response.data);
     }
   };
+
+  const postUser = async () => {
+    const response = await axios.post(httpHead + "users", { name: "Josey", email: "aaa@com" });
+    if (response.status === 200) {
+      console.log(response.data);
+    }
+  };
+
   return (
     <div>
       <div>
         <button onClick={() => handleRequest()}>Click</button>
+      </div>
+      <div>
+        <button onClick={() => postUser()}>post</button>
       </div>
     </div>
   );
