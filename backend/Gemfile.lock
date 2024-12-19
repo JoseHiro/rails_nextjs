@@ -117,7 +117,6 @@ GEM
     minitest (5.25.4)
     msgpack (1.7.5)
     mutex_m (0.3.0)
-    mysql2 (0.5.6)
     net-imap (0.5.1)
       date
       net-protocol
@@ -130,16 +129,7 @@ GEM
     nio4r (2.7.4)
     nokogiri (1.17.0-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.17.0-arm-linux)
-      racc (~> 1.4)
-    nokogiri (1.17.0-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.17.0-x86-linux)
-      racc (~> 1.4)
-    nokogiri (1.17.0-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.17.0-x86_64-linux)
-      racc (~> 1.4)
+    pg (1.5.9)
     psych (5.2.1)
       date
       stringio
@@ -202,33 +192,20 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  aarch64-linux-gnu
-  aarch64-linux-musl
-  arm-linux
-  arm-linux-gnu
-  arm-linux-musl
-  arm64-darwin
-  x86-linux
-  x86-linux-gnu
-  x86-linux-musl
-  x86_64-darwin
-  x86_64-linux
-  x86_64-linux-gnu
-  x86_64-linux-musl
 
 DEPENDENCIES
   bootsnap
   debug
   dotenv
   error_highlight (>= 0.4.0)
-  mysql2
+  pg (~> 1.4)
   puma (>= 5.0)
   rack-cors
   rails (~> 7.1.5)
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.6p234
 
 BUNDLED WITH
    2.5.6
