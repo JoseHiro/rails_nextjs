@@ -4,6 +4,13 @@ class UsersController < ApplicationController
     render json: users
   end
 
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      render json: {message: "Successfully deleted user"}
+    end
+  end
+
   def create
     user = User.new(user_params)
     if user.save
@@ -17,6 +24,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
-
-
 end
