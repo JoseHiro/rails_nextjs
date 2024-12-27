@@ -1,45 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-const httpHead = "http://0.0.0.0:3000/";
+import styles from "../styles/index.module.css";
 
-const index = () => {
-  const handleRequest = async () => {
-    const response = await axios.get(httpHead + "users");
-    if (response.status === 200) {
-      console.log(response.data);
-    }
+type HiraganaCharacter = {
+  character: string;
+  romaji: string;
+};
+
+const base = "http://0.0.0.0:3000/";
+
+const HIRAGANA: HiraganaCharacter[] = [
+  { character: "あ", romaji: "a" },
+  { character: "い", romaji: "i" },
+  { character: "う", romaji: "u" },
+  { character: "え", romaji: "e" },
+  { character: "お", romaji: "o" },
+  { character: "か", romaji: "ka" },
+  { character: "き", romaji: "ki" },
+  { character: "く", romaji: "ku" },
+  { character: "け", romaji: "ke" },
+  { character: "こ", romaji: "ko" },
+  // Add more Hiragana characters as needed
+];
+
+const Home: React.FC = () => {
+  const [current, setCurrent] = useState<HiraganaCharacter>(HIRAGANA[0]);
+  const [input, setInput] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [consecutiveCounts, setConsecutiveCounts] = useState(0);
+
+  const getNextCharacter = () => {
+    const nextIndex = Math.floor(Math.random() * HIRAGANA.length);
+    setCurrent(HIRAGANA[nextIndex]);
+    setInput("");
+    setFeedback("");
   };
 
-  const postUser = async () => {
-    const response = await axios.post(httpHead + "users", {
-      name: "Josey",
-      email: "aaa@com",
-    });
-    if (response.status === 200) {
-      console.log(response.data);
-    }
-  };
+  const checkAnswer = async () => {
+    if (input.trim().toLowerCase() === current.romaji) {
+      setFeedback("Correct! 🎉");
+      const updateCounts = consecutiveCounts + 1;
+      setConsecutiveCounts(updateCounts);
+      setTimeout(getNextCharacter, 1500); // Automatically move to the next character after 1.5 seconds
+    } else {
+      if (consecutiveCounts > 0) {
+        const response = await axios.post(base + "api/update_ranking", {
+          consecutiveCounts,
+        });
 
-  const deleteUser = async () => {
-    const response = await axios.delete(httpHead + "users/1");
-    if (response.status === 200) {
-      console.log(response.data);
+        if (response.status === 200) {
+          console.log("updated data");
+        } else {
+          console.log("Something went wrong");
+        }
+      }
+      setFeedback("Incorrect. Try again!");
     }
   };
 
   return (
-    <div>
-      <div>
-        <button onClick={() => handleRequest()}>Click</button>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Hiragana Practice</h1>
+      <div className={styles.characterBox}>
+        <h2>{current.character}</h2>
       </div>
-      <div>
-        <button onClick={() => postUser()}>post</button>
-      </div>
-      <div>
-        <button onClick={() => deleteUser()}>Delete</button>
-      </div>
+      <input
+        type="text"
+        placeholder="Type the Romaji"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        className={styles.input}
+      />
+      <button onClick={checkAnswer} className={styles.button}>
+        Submit
+      </button>
+      <p
+        className={`${styles.feedback} ${
+          feedback === "Correct! 🎉" ? styles.correct : styles.incorrect
+        }`}
+      >
+        {feedback}
+      </p>
     </div>
   );
 };
 
-export default index;
+export default Home;
