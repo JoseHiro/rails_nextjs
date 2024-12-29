@@ -36,6 +36,19 @@ const Home: React.FC = () => {
     setFeedback("");
   };
 
+  const handleLogin = async () => {
+    const response = await axios.post(base + "login", {
+      user: {
+        email: "test8@example.com",
+        password: "password123",
+      },
+    });
+
+    if (response.status === 200) {
+      console.log(response);
+    }
+  };
+
   const checkAnswer = async () => {
     if (input.trim().toLowerCase() === current.romaji) {
       setFeedback("Correct! 🎉");
@@ -81,6 +94,8 @@ const Home: React.FC = () => {
       >
         {feedback}
       </p>
+
+      <button onClick={handleLogin}>login</button>
     </div>
   );
 };
