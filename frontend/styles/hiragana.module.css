@@ -1,0 +1,85 @@
+.container {
+  height: 100vh;
+  background: linear-gradient(to bottom, #f0e4d7, #f7c4a5);
+  text-align: center;
+  font-family: 'Poppins', Arial, sans-serif; /* Modern, clean font */
+  min-height: 100vh;
+  padding: 20px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.h1 {
+  font-size: 2.5rem;
+  color: #343a40;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.selectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 30px 0;
+  padding: 10px;
+}
+
+.row {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.row:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.row label {
+  font-size: 1.2rem;
+  color: #495057;
+  cursor: pointer;
+}
+
+.startButton {
+  background: linear-gradient(to right, #ff6f61, #ff9068);
+  color: #fff;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.startButton:hover {
+  background: linear-gradient(to right, #ff9068, #ff6f61);
+  transform: translateY(-3px);
+}
+
+.startButton:disabled {
+  background: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.practiceSection {
+  margin-top: 40px;
+  padding: 20px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.practiceSection h2 {
+  font-size: 1.8rem;
+  color: #343a40;
+}
+
+.practiceSection p {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-top: 10px;
+}

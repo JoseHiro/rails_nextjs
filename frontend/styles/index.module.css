@@ -4,63 +4,121 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #f0e4d7, #f7c4a5);
-  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f0e4d7, #f7c4a5);
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
 }
 
 .title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 30px;
   color: #4a4a4a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.mode_select_container {
+  display: flex;
+  column-gap: 20px;
+}
+
+.mode_button_display h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4a4a4a;
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.mode_button_display h3:hover {
+  color: #ff6f61;
+  transform: translateY(5px);
+}
+
+/* Optional: Adding a subtle text shadow for better contrast */
+.mode_button_display h3 {
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensuring responsive design for smaller screens */
+@media (max-width: 600px) {
+  .mode_button_display h3 {
+    font-size: 1.3rem;
+  }
 }
 
 .characterBox {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
-  height: 150px;
-  font-size: 4rem;
+  width: 180px;
+  height: 180px;
+  font-size: 5rem;
   background-color: #fff;
   border: 3px solid #ff6f61;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease;
 }
 
-.input {
-  width: 200px;
-  padding: 10px;
-  font-size: 1.2rem;
-  border: 2px solid #ff6f61;
-  border-radius: 5px;
-  margin-bottom: 20px;
+.characterBox:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  background-color: #ff6f61;
+  color: #fff;
 }
 
-.button {
+.characterBox h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.characterBox:hover h2 {
+  color: #fff;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(135deg, #f0e4d7, #f7c4a5);
+  }
+  50% {
+    background: linear-gradient(135deg, #f7c4a5, #f0e4d7);
+  }
+  100% {
+    background: linear-gradient(135deg, #f0e4d7, #f7c4a5);
+  }
+}
+
+.container {
+  animation: backgroundAnimation 10s infinite ease;
+}
+
+.learningSheetButton {
+  margin-top: 30px;
+  padding: 15px 30px;
   background-color: #ff6f61;
   color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s ease;
+  text-transform: uppercase;
 }
 
-.button:hover {
-  background-color: #ff3f3f;
+.learningSheetButton:hover {
+  background-color: #ff4a3f;
+  transform: translateY(-5px);
 }
 
-.feedback {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-.correct {
-  color: green;
-}
-
-.incorrect {
-  color: red;
+.learningSheetButton:focus {
+  outline: none;
 }
