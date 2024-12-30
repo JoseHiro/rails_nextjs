@@ -1,0 +1,44 @@
+
+.learningSheet {
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.character {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.romaji {
+  font-size: 1.2em;
+  color: #888;
+}
