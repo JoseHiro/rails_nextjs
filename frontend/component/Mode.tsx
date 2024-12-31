@@ -56,7 +56,7 @@ const Mode = (props: any) => {
 
   const handleFinishExercise = () => {
     shootConfetti();
-    setFeedback("Correct! 🎉");
+
     setFinish(true);
   };
 
@@ -66,6 +66,7 @@ const Mode = (props: any) => {
 
   const checkAnswer = async () => {
     if (input.trim().toLowerCase() === current.romaji) {
+      setFeedback("Correct! 🎉");
       setTimeout(getNextCharacter, 500);
 
       // const updateCounts = consecutiveCounts + 1;
