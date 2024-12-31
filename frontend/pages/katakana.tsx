@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import RowSelector from "@/component/RowSelecter";
 
-function katakana() {
-  return (
-    <div>katakana</div>
-  )
-}
+const katakana = () => {
+  return <RowSelector />;
+};
 
-export default katakana
+export default katakana;
